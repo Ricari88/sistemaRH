@@ -1,11 +1,13 @@
 <?php
 function entrada($entrada){
-    /*verificar entrada*/
-    if($entrada>"07:00:01"){
-        return "<td class='late'>".$entrada."</td>";
+    $time = date('H:i:s', strtotime( $entrada ) );
+    $dia = date('Y-m-d', strtotime( $entrada ) );
+
+    if($time>"07:00:01"){
+        return "<td>".$dia."</td><td class='late'>".$time."</td>";
     }
     else{
-        return "<td>".$entrada."</td>";
+        return "<td>".$dia."</td><td>".$time."</td>";
     }
 
 }

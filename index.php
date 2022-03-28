@@ -26,9 +26,13 @@
             <tr>
                 <th>RPE</th>
                 <th>Nombre</th>
-                <th>Hora de entrada</th>
-                <th>Hora de salida</th>
-                <th>Observaciones</th>
+                <th>Fecha</th>
+                <th>Hora del registro</th>
+                <th>Dispositivo</th>
+                <th>Punto de checada</th>
+                <th>Tipo de verificación</th>
+                <th>Estado</th>
+                <th>Evento</th>
             </tr>
         </thead>
         <tbody>
@@ -41,19 +45,25 @@
         //exit();
     }
     else{
-        $sql="SELECT * FROM asistencia ORDER BY id ASC";
+        $sql="SELECT `asistencia`.*, `empleado`.*
+            FROM `asistencia` 
+            LEFT JOIN `empleado` ON `asistencia`.`empleado_idempleado` = `empleado`.`idempleado`
+            ORDER BY `asistencia`.`tiempo` ASC";
 
         $result = $conexion->query($sql);
 
         if($result->num_rows){
             while ($fila = $result->fetch_assoc()) {
                 echo '<tr>';
-                echo '<td class="text-center">'.$fila['rpe'].'</td>';
+                echo '<td>'.$fila['rpe'].'</td>';
                 echo '<td>'.$fila['nombre'].'</a></td>';
-                echo entrada($fila['hentrada']);
-                echo salida($fila['hsalida']);
-                echo '<td>'.$fila['estatus'].'</td>';
-                echo '<td>'.$fila['observaciones'].'</td>';
+                echo entrada($fila['Tiempo']);
+                //echo salida($fila['hsalida']);
+                echo '<td>'.$fila['Dispositivo'].'</td>';
+                echo '<td>'.$fila['Punto del evento'].'</td>';
+                echo '<td>'.$fila['Verificacion'].'</td>';
+                echo '<td>'.$fila['Estado'].'</td>';
+                echo '<td>'.$fila['Evento'].'</td>';
                 echo '</tr>';
             }
         }
