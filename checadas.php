@@ -1,5 +1,5 @@
 <?php
-function entrada($entrada){
+function entrada($entrada, $estatus){
     $time = date('H:i:s', strtotime( $entrada ) );
     $dia = date('Y-m-d', strtotime( $entrada ) );
 
@@ -13,7 +13,7 @@ function entrada($entrada){
 }
 
 
-function salida($salida){
+function salida($salida,){
     /*verificar salida*/
 
     if($salida<"14:50:01"){

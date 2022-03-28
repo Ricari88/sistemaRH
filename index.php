@@ -57,7 +57,7 @@
                 echo '<tr>';
                 echo '<td>'.$fila['rpe'].'</td>';
                 echo '<td>'.$fila['nombre'].'</a></td>';
-                echo entrada($fila['Tiempo']);
+                echo entrada($fila['Tiempo'],$fila['Evento']);
                 //echo salida($fila['hsalida']);
                 echo '<td>'.$fila['Dispositivo'].'</td>';
                 echo '<td>'.$fila['Punto del evento'].'</td>';
