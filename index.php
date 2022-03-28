@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        table th{
+        /* table th{
             background-color: #555;
             color: white;
         }
 
         table tr:nth-child(even){
             background-color: #aaa;
-        }
+        } */
         .late{
             color: white;
             background-color: red;
@@ -54,9 +54,10 @@
 
         if($result->num_rows){
             while ($fila = $result->fetch_assoc()) {
+                $nombreEmpleado = $fila['nombre'].' '.$fila['apellido'];
                 echo '<tr>';
                 echo '<td>'.$fila['rpe'].'</td>';
-                echo '<td>'.$fila['nombre'].'</a></td>';
+                echo '<td>'.$nombreEmpleado.'</a></td>';
                 echo entrada($fila['Tiempo'],$fila['Evento']);
                 //echo salida($fila['hsalida']);
                 echo '<td>'.$fila['Dispositivo'].'</td>';

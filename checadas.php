@@ -1,7 +1,7 @@
 <?php
 function entrada($entrada, $estatus){
     $time = date('H:i:s', strtotime( $entrada ) );
-    $dia = date('Y-m-d', strtotime( $entrada ) );
+    $dia = date('d-m-Y', strtotime( $entrada ) );
 
     if($time>"07:00:01"){
         return "<td>".$dia."</td><td class='late'>".$time."</td>";
