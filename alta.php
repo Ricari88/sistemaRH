@@ -3,17 +3,22 @@
 include('scripts/php/conexion.php');
 include('scripts/php/queries/insert.php');
 
-$Tiempo = "2022-03-30 07:00:03";
+$Tiempo = "2022-03-29 14:52:00";
 $empleado_idempleado = 222;
 /*$Nombre = "";
 $Tarjeta = "";*/
 $Dispositivo = "Estudios";
 $Punto_Evento = "Estudios-1";
 $Verificacion = "Solo rostro";
-$Estado = "Entrada";
+$Estado = "Salida";
 $Evento = "Apertura con tarjeta de proximidad";
 
-$sql = insert($Tiempo,$empleado_idempleado,$Dispositivo,$Punto_Evento,$Verificacion,$Estado, $Evento);
+if($Estado==="Entrada"){
+    $sql = entrada($Tiempo,$empleado_idempleado,$Dispositivo,$Punto_Evento,$Verificacion,$Estado, $Evento);
+}
+elseif ($Estado==="Salida") {
+    $sql = salida($Tiempo,$empleado_idempleado,$Dispositivo,$Punto_Evento,$Verificacion,$Estado, $Evento);
+}
 
 
 if ($conexion->query($sql) === TRUE) {
