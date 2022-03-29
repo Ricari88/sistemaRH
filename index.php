@@ -1,26 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        /* table th{
-            background-color: #555;
-            color: white;
-        }
-
-        table tr:nth-child(even){
-            background-color: #aaa;
-        } */
-        .late{
-            color: white;
-            background-color: red;
-        }
-    </style>
-</head>
-<body>
+<?php include('scripts/php/banners/head.php');?>
     <table>
         <thead>
             <tr>
@@ -33,23 +11,21 @@
                 <th>Tipo de verificación</th>
                 <th>Estado</th>
                 <th>Evento</th>
+                <th>Notas</th>
             </tr>
         </thead>
         <tbody>
 <?php
-    include("conexion.php");
-    include("checadas.php");
+    include("scripts/php/conexion.php");
+    include("scripts/php/checadas.php");
+    include("scripts/php/queries/busquedas.php");
 
     if ($conexion -> connect_errno) {
         die('hubo un error en la conexion al servidor');
         //exit();
     }
     else{
-        $sql="SELECT `asistencia`.*, `empleado`.*
-            FROM `asistencia` 
-            LEFT JOIN `empleado` ON `asistencia`.`empleado_idempleado` = `empleado`.`idempleado`
-            ORDER BY `asistencia`.`tiempo` ASC";
-
+        $sql = datosChecadas();
         $result = $conexion->query($sql);
 
         if($result->num_rows){
@@ -65,6 +41,7 @@
                 echo '<td>'.$fila['Verificacion'].'</td>';
                 echo '<td>'.$fila['Estado'].'</td>';
                 echo '<td>'.$fila['Evento'].'</td>';
+                echo '<td>'.$fila['Notas'].'</td>';
                 echo '</tr>';
             }
         }
@@ -72,5 +49,4 @@
 ?>
         </tbody>
     </table>
-</body>
-</html>
+<?php include('scripts/php/banners/foot.php');?>

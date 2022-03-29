@@ -1,0 +1,13 @@
+table th{
+    background-color: #555;
+    color: white;
+}
+
+table tr:nth-child(even){
+    background-color: #aaa;
+}
+
+.late{
+    color: white;
+    background-color: red;
+}
