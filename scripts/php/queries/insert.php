@@ -1,5 +1,8 @@
 <?php
+
 function entrada(...$strings){
+    include("../banners/turnos.php");
+
     
     $arr = array();
 
@@ -9,8 +12,6 @@ function entrada(...$strings){
 
         $tiempo = $arr[0];
         $idempleado = $arr[1];
-        //$nombre = $arr[2];
-        //$tarjeta = $arr[3];
         $dispositivo = $arr[2];
         $puntoEvento = $arr[3];
         $verificacion = $arr[4];
@@ -19,30 +20,48 @@ function entrada(...$strings){
 
 
         $time = date('H:i:s', strtotime( $tiempo ) );
-
-        if($time > "07:00:01"){
-            $sql = "INSERT INTO `asistencia` 
-                    (`Tiempo`, `empleado_idempleado`, `Dispositivo`, `Punto del evento`, `Verificacion`, `Estado`, `Evento`, `Notas`) 
-                    VALUES 
-                    ('$tiempo', '$idempleado', '$dispositivo', '$puntoEvento', '$verificacion', '$estado', '$evento', 'Retardo')";
         
-            return $sql;
-        }
-        else{
+        switch ($time) {
+            case $time > $turnoMatutino && $time < $salidaMatutino:
                 $sql = "INSERT INTO `asistencia` 
-                (`Tiempo`, `empleado_idempleado`, `Dispositivo`, `Punto del evento`, `Verificacion`, `Estado`, `Evento`, `Notas`) 
+                    (`Fecha`, `empleado_idempleado`, `Dispositivo`, `Punto del evento`, `Verificacion`, `Estado`, `Evento`, `Notas`) 
                     VALUES 
-                    ('$tiempo', '$idempleado', '$dispositivo', '$puntoEvento', '$verificacion', '$estado', '$evento', '')";
-        
-                return $sql;
+                    ('$tiempo', '$idempleado', '$dispositivo', '$puntoEvento', '$verificacion', '$estado', '$evento', 'Retardo M')";
             
-            }
+                    return $sql;
+                break;
+            case $time > $turnoVespertino && $time < $salidaVespertino:
+                $sql = "INSERT INTO `asistencia` 
+                        (`Fecha`, `empleado_idempleado`, `Dispositivo`, `Punto del evento`, `Verificacion`, `Estado`, `Evento`, `Notas`) 
+                        VALUES 
+                        ('$tiempo', '$idempleado', '$dispositivo', '$puntoEvento', '$verificacion', '$estado', '$evento', 'Retardo V')";
+            
+                    return $sql;
+                break;
+            case $time > $turnoNocturno:
+                $sql = "INSERT INTO `asistencia` 
+                        (`Fecha`, `empleado_idempleado`, `Dispositivo`, `Punto del evento`, `Verificacion`, `Estado`, `Evento`, `Notas`) 
+                        VALUES 
+                        ('$tiempo', '$idempleado', '$dispositivo', '$puntoEvento', '$verificacion', '$estado', '$evento', 'Retardo N')";
+    
+                    return $sql;
+                break;
+            default:
+                $sql = "INSERT INTO `asistencia` 
+                        (`Fecha`, `empleado_idempleado`, `Dispositivo`, `Punto del evento`, `Verificacion`, `Estado`, `Evento`, `Notas`) 
+                        VALUES 
+                        ('$tiempo', '$idempleado', '$dispositivo', '$puntoEvento', '$verificacion', '$estado', '$evento', 'OK')";
+    
+                    return $sql;
+                break;
+        }
 
 }
 
 
 
 function salida(...$strings){
+    include("../banners/turnos.php");
     
     $arr = array();
 
@@ -52,8 +71,6 @@ function salida(...$strings){
 
         $tiempo = $arr[0];
         $idempleado = $arr[1];
-        //$nombre = $arr[2];
-        //$tarjeta = $arr[3];
         $dispositivo = $arr[2];
         $puntoEvento = $arr[3];
         $verificacion = $arr[4];
@@ -62,23 +79,41 @@ function salida(...$strings){
 
 
         $time = date('H:i:s', strtotime( $tiempo ) );
-        if($time < "14:50:01"){
+
+        switch ($time) {
+            case $time < $salidaMatutino && $time > $turnoMatutino:
                 $sql = "INSERT INTO `asistencia` 
-                (`Tiempo`, `empleado_idempleado`, `Dispositivo`, `Punto del evento`, `Verificacion`, `Estado`, `Evento`, `Notas`) 
-                VALUES 
-                ('$tiempo', '$idempleado', '$dispositivo', '$puntoEvento', '$verificacion', '$estado', '$evento', 'Antes')";
-        
-                return $sql;
-        }
-        else{
-                $sql = "INSERT INTO `asistencia` 
-                (`Tiempo`, `empleado_idempleado`, `Dispositivo`, `Punto del evento`, `Verificacion`, `Estado`, `Evento`, `Notas`) 
+                    (`Fecha`, `empleado_idempleado`, `Dispositivo`, `Punto del evento`, `Verificacion`, `Estado`, `Evento`, `Notas`) 
                     VALUES 
-                    ('$tiempo', '$idempleado', '$dispositivo', '$puntoEvento', '$verificacion', '$estado', '$evento', '')";
-        
-                return $sql;
+                    ('$tiempo', '$idempleado', '$dispositivo', '$puntoEvento', '$verificacion', '$estado', '$evento', 'Adelantado M')";
             
-            }
+                    return $sql;
+                break;
+            case $time < $salidaVespertino && $time > $turnoVespertino:
+                $sql = "INSERT INTO `asistencia` 
+                        (`Fecha`, `empleado_idempleado`, `Dispositivo`, `Punto del evento`, `Verificacion`, `Estado`, `Evento`, `Notas`) 
+                        VALUES 
+                        ('$tiempo', '$idempleado', '$dispositivo', '$puntoEvento', '$verificacion', '$estado', '$evento', 'Adelantado V')";
+            
+                    return $sql;
+                break;
+            case $time < $salidaNocturno:
+                $sql = "INSERT INTO `asistencia` 
+                        (`Fecha`, `empleado_idempleado`, `Dispositivo`, `Punto del evento`, `Verificacion`, `Estado`, `Evento`, `Notas`) 
+                        VALUES 
+                        ('$tiempo', '$idempleado', '$dispositivo', '$puntoEvento', '$verificacion', '$estado', '$evento', 'Adelantado N')";
+    
+                    return $sql;
+                break;
+            default:
+                $sql = "INSERT INTO `asistencia` 
+                        (`Fecha`, `empleado_idempleado`, `Dispositivo`, `Punto del evento`, `Verificacion`, `Estado`, `Evento`, `Notas`) 
+                        VALUES 
+                        ('$tiempo', '$idempleado', '$dispositivo', '$puntoEvento', '$verificacion', '$estado', '$evento', 'OK')";
+    
+                    return $sql;
+                break;
+        }
 }
 
 

@@ -34,8 +34,12 @@
                 echo '<tr>';
                 echo '<td>'.$fila['rpe'].'</td>';
                 echo '<td>'.$nombreEmpleado.'</a></td>';
-                echo entrada($fila['Tiempo'],$fila['Estado']);
-                //echo salida($fila['hsalida']);
+                if($fila['Estado']=="Entrada"){
+                    echo entrada($fila['Fecha']);
+                }
+                else{
+                    echo salida($fila['Fecha']);
+                }
                 echo '<td>'.$fila['Dispositivo'].'</td>';
                 echo '<td>'.$fila['Punto del evento'].'</td>';
                 echo '<td>'.$fila['Verificacion'].'</td>';

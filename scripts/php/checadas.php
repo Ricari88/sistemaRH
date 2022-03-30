@@ -1,27 +1,48 @@
 <?php
-function entrada($entrada, $estatus){
+
+function entrada($entrada){
+    include("banners/turnos.php");
+
     $time = date('H:i:s', strtotime( $entrada ) );
     $dia = date('d-m-Y', strtotime( $entrada ) );
 
-    if($time>"07:00:01"){
-        return "<td>".$dia."</td><td class='late'>".$time."</td>";
-    }
-    else{
-        return "<td>".$dia."</td><td>".$time."</td>";
+    switch ($time) {
+        case $time > $turnoMatutino && $time < $salidaMatutino:
+            return "<td>".$dia."</td><td class='late'>".$time."</td>";
+            break;
+        case $time > $turnoVespertino && $time < $salidaVespertino:
+            return "<td>".$dia."</td><td class='late'>".$time."</td>";
+            break;
+        case $time > $turnoNocturno:
+            return "<td>".$dia."</td><td class='late'>".$time."</td>";
+            break;
+        default:
+            return "<td>".$dia."</td><td>".$time."</td>";
+            break;
     }
 
 }
 
 
-function salida($salida,){
-    /*verificar salida*/
+function salida($salida){
+    include("banners/turnos.php");
 
-    if($salida<"14:50:01"){
-        return "<td class='late'>".$salida."</td>";
-    }
-    else{
-        return "<td>".$salida."</td>";
+    $time = date('H:i:s', strtotime( $salida ) );
+    $dia = date('d-m-Y', strtotime( $salida ) );
+
+    switch ($time) {
+        case $time < $salidaMatutino && $time > $turnoMatutino:
+            return "<td>".$dia."</td><td class='late'>".$time."</td>";
+            break;
+        case $time < $salidaVespertino && $time > $turnoVespertino:
+            return "<td>".$dia."</td><td class='late'>".$time."</td>";
+            break;
+        case $time < $salidaNocturno:
+            return "<td>".$dia."</td><td class='late'>".$time."</td>";
+            break;
+        default:
+            return "<td>".$dia."</td><td>".$time."</td>";
+        break;
     }
 }
-
 ?>
