@@ -1,8 +1,13 @@
 <?php
 
 function entrada(...$strings){
-    include("../banners/turnos.php");
-
+    //include("../banners/turnos.php");
+    $turnoMatutino = "07:00";
+    $salidaMatutino = "14:50";
+    $turnoVespertino = "15:00";
+    $salidaVespertino = "22:50";
+    $turnoNocturno = "23:00";
+    $salidaNocturno = "06:50";
     
     $arr = array();
 
@@ -19,8 +24,8 @@ function entrada(...$strings){
         $evento = $arr[6];
 
 
-        $time = date('H:i:s', strtotime( $tiempo ) );
-        
+        $time = date('H:i', strtotime( $tiempo ) );
+        //$dia = date('Y-m-d', strtotime( $tiempo ) );
         switch ($time) {
             case $time > $turnoMatutino && $time < $salidaMatutino:
                 $sql = "INSERT INTO `asistencia` 
@@ -61,8 +66,13 @@ function entrada(...$strings){
 
 
 function salida(...$strings){
-    include("../banners/turnos.php");
-    
+    //include("../banners/turnos.php");
+    $turnoMatutino = "07:00";
+    $salidaMatutino = "14:50";
+    $turnoVespertino = "15:00";
+    $salidaVespertino = "22:50";
+    $turnoNocturno = "23:00";
+    $salidaNocturno = "06:50";
     $arr = array();
 
     foreach($strings as $value){
@@ -78,7 +88,7 @@ function salida(...$strings){
         $evento = $arr[6];
 
 
-        $time = date('H:i:s', strtotime( $tiempo ) );
+        $time = date('H:i', strtotime( $tiempo ) );
 
         switch ($time) {
             case $time < $salidaMatutino && $time > $turnoMatutino:

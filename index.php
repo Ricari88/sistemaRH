@@ -34,12 +34,7 @@
                 echo '<tr>';
                 echo '<td>'.$fila['rpe'].'</td>';
                 echo '<td>'.$nombreEmpleado.'</a></td>';
-                if($fila['Estado']=="Entrada"){
-                    echo entrada($fila['Fecha']);
-                }
-                else{
-                    echo salida($fila['Fecha']);
-                }
+                echo ($fila['Estado']=="Entrada") ? entrada($fila['Fecha']) : salida($fila['Fecha']);
                 echo '<td>'.$fila['Dispositivo'].'</td>';
                 echo '<td>'.$fila['Punto del evento'].'</td>';
                 echo '<td>'.$fila['Verificacion'].'</td>';
@@ -53,4 +48,14 @@
 ?>
         </tbody>
     </table>
-<?php include('scripts/php/banners/foot.php');?>
+<?php include('scripts/php/banners/foot.php');
+
+/*
+dachit?
+if($fila['Estado']=="Entrada"){
+                    echo entrada($fila['Fecha']);
+                }
+                else{
+                    echo salida($fila['Fecha']);
+                }*/
+?>

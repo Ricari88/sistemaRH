@@ -3,7 +3,7 @@
 function entrada($entrada){
     include("banners/turnos.php");
 
-    $time = date('H:i:s', strtotime( $entrada ) );
+    $time = date('H:i', strtotime( $entrada ) );
     $dia = date('d-m-Y', strtotime( $entrada ) );
 
     switch ($time) {
@@ -27,7 +27,7 @@ function entrada($entrada){
 function salida($salida){
     include("banners/turnos.php");
 
-    $time = date('H:i:s', strtotime( $salida ) );
+    $time = date('H:i', strtotime( $salida ) );
     $dia = date('d-m-Y', strtotime( $salida ) );
 
     switch ($time) {

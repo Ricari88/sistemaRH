@@ -3,12 +3,12 @@ error_reporting(0);
 include('scripts/php/conexion.php');
 include('scripts/php/queries/insert.php');
 
-$Tiempo = "2022-03-29 06:49:30";
-$empleado_idempleado = 123;
+$Tiempo = "2022-04-04 06:48:50";
+$empleado_idempleado = "222";
 /*$Nombre = "";
 $Tarjeta = "";*/
-$Dispositivo = "Estudios";
-$Punto_Evento = "Estudios-1";
+$Dispositivo = "Obras";
+$Punto_Evento = "Obras-2";
 $Verificacion = "Solo rostro";
 $Estado = "Entrada";
 $Evento = "Apertura con tarjeta de proximidad";
