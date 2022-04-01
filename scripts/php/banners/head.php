@@ -6,5 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles/main/tabla.css">
+    <link rel="stylesheet" href="styles/main/form.css">
 </head>
 <body>

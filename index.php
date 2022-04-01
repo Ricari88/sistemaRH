@@ -50,12 +50,4 @@
     </table>
 <?php include('scripts/php/banners/foot.php');
 
-/*
-dachit?
-if($fila['Estado']=="Entrada"){
-                    echo entrada($fila['Fecha']);
-                }
-                else{
-                    echo salida($fila['Fecha']);
-                }*/
 ?>
