@@ -3,6 +3,7 @@ error_reporting(0);
 include('scripts/php/conexion.php');
 include('scripts/php/queries/insert.php');
 include('scripts/php/banners/head.php');
+include('scripts/php/verificarRegistro.php');
 ?>
 
 <form action="alta.php" method="post">
@@ -28,6 +29,12 @@ else {
     $Dispositivo = "Estudio";
     $Punto_Evento = "Estudios-1";
     $Verificacion = "Solo rostro";
+
+    /*$status = verificarRegistro($entrada);
+    if($status == true){
+
+    }*/
+
     $Estado = "Entrada";
     $Evento = "Apertura con tarjeta de proximidad";
     
