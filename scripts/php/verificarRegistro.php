@@ -1,5 +1,5 @@
 <?php
-function verificarRegistro($registro){
+function verificarRegistro($registro, $idempleado){
     include('conexion.php');
     include('queries/busquedas.php');
 
@@ -11,10 +11,10 @@ function verificarRegistro($registro){
         //exit();
     }
     else{
-        $idempleado = '222';
+        //$idempleado = '222';
         $sql = busquedaFechaRegistro($idempleado);//busca el registro de checada mas reciente en la bd
         $result = $conexion->query($sql);
-        $estado;
+        
         if($result->num_rows){
             while ($fila = $result->fetch_assoc()) {
 
@@ -25,14 +25,18 @@ function verificarRegistro($registro){
 
                     case $diaRegistroAnterior == $registroActual:
                         if($horaRegistroAnterior < $horaRegistroActual){
-                            return $estado = 'Salida '.$fila['Fecha'];
+                            return 'Salida';
                             break;
                         }
                         break;
                     
                     case $diaRegistroAnterior < $registroActual:
+                        return 'Entrada';
+                        break;
+                    
+                    case $diaRegistroAnterior == $registroActual:
                         if($horaRegistroAnterior < $horaRegistroActual){
-                            return $estado = 'Entrada '.$fila['Fecha'];
+                            return 'Entrada';
                             break;
                         }
                         break;
@@ -47,6 +51,4 @@ function verificarRegistro($registro){
         }
     }
 }
-
-echo '<p>'.verificarRegistro('2022-05-01 06:35:35')."</p>";
 ?>

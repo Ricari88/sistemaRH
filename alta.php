@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 include('scripts/php/conexion.php');
 include('scripts/php/queries/insert.php');
 include('scripts/php/banners/head.php');
@@ -22,20 +22,14 @@ if ($conexion -> connect_errno) {
 }
 else {
   if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $Tiempo = "2022-04-30 06:50:35";
-    $empleado_idempleado = "222";
-    /*$Nombre = "";
-    $Tarjeta = "";*/
+    $Tiempo = "2022-05-01 23:01:59";
+    $empleado_idempleado = "123";
     $Dispositivo = "Estudio";
     $Punto_Evento = "Estudios-1";
     $Verificacion = "Solo rostro";
 
-    /*$status = verificarRegistro($entrada);
-    if($status == true){
-
-    }*/
-
-    $Estado = "Entrada";
+    $Estado = verificarRegistro($Tiempo,$empleado_idempleado);
+    //$Estado = "Entrada";
     $Evento = "Apertura con tarjeta de proximidad";
     
     if($Estado=="Entrada"){
