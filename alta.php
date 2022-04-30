@@ -22,7 +22,7 @@ if ($conexion -> connect_errno) {
 }
 else {
   if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $Tiempo = "2022-04-05 06:02:35";
+    $Tiempo = "2022-04-30 06:50:35";
     $empleado_idempleado = "222";
     /*$Nombre = "";
     $Tarjeta = "";*/
