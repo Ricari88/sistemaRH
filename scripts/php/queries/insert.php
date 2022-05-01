@@ -127,4 +127,31 @@ function salida(...$strings){
 }
 
 
+
+function nuevoRegistro(...$strings){
+
+    $arr = array();
+
+    foreach($strings as $value){
+        array_push($arr,$value);
+    }
+
+    $tiempo = $arr[0];
+    $idempleado = $arr[1];
+    $dispositivo = $arr[2];
+    $puntoEvento = $arr[3];
+    $verificacion = $arr[4];
+    $estado = $arr[5];
+    $evento = $arr[6];
+
+
+    $time = date('H:i', strtotime( $tiempo ) );
+
+    $sql = "INSERT INTO `asistencia` 
+                        (`Fecha`, `empleado_idempleado`, `Dispositivo`, `Punto del evento`, `Verificacion`, `Estado`, `Evento`, `Notas`) 
+                        VALUES 
+                        ('$tiempo', '$idempleado', '$dispositivo', '$puntoEvento', '$verificacion', '$estado', '$evento', 'OK')";
+    return $sql;
+}
+
 ?>

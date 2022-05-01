@@ -22,14 +22,14 @@ if ($conexion -> connect_errno) {
 }
 else {
   if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $Tiempo = "2022-05-01 23:01:59";
-    $empleado_idempleado = "123";
-    $Dispositivo = "Estudio";
-    $Punto_Evento = "Estudios-1";
+    $Tiempo = "2022-05-03 23:15:00";
+    $empleado_idempleado = "369";
+    $Dispositivo = "Suministro";
+    $Punto_Evento = "Suministro";
     $Verificacion = "Solo rostro";
 
     $Estado = verificarRegistro($Tiempo,$empleado_idempleado);
-    //$Estado = "Entrada";
+    
     $Evento = "Apertura con tarjeta de proximidad";
     
     if($Estado=="Entrada"){
@@ -38,11 +38,16 @@ else {
     elseif ($Estado=="Salida") {
         $sql = salida($Tiempo,$empleado_idempleado,$Dispositivo,$Punto_Evento,$Verificacion,$Estado, $Evento);
     }
+    else{
+        $sql = nuevoRegistro($Tiempo, $empleado_idempleado, $Dispositivo, $Punto_Evento, $Verificacion, $Estado, $Evento);
+    }
     
+    echo $Estado;
     
     if ($conexion->query($sql) === TRUE) {
         echo "New record created successfully";
-      } else {
+      }
+    else {
         echo "Error: " . $sql . "<br>" . $conexion->error;
       }
       
@@ -50,7 +55,5 @@ else {
   }
 
 }
-
-
 
 ?>

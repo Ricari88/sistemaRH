@@ -14,6 +14,7 @@ function verificarRegistro($registro, $idempleado){
         //$idempleado = '222';
         $sql = busquedaFechaRegistro($idempleado);//busca el registro de checada mas reciente en la bd
         $result = $conexion->query($sql);
+
         
         if($result->num_rows){
             while ($fila = $result->fetch_assoc()) {
@@ -28,18 +29,20 @@ function verificarRegistro($registro, $idempleado){
                             return 'Salida';
                             break;
                         }
-                        break;
                     
                     case $diaRegistroAnterior < $registroActual:
-                        return 'Entrada';
-                        break;
-                    
-                    case $diaRegistroAnterior == $registroActual:
-                        if($horaRegistroAnterior < $horaRegistroActual){
+                        if($fila['Estado'] == 'Entrada'){
+                            return 'Salida';
+                            break;
+                        }
+                        elseif ($fila['Estado'] == 'Salida') {
                             return 'Entrada';
                             break;
                         }
-                        break;
+                        else{
+                            return 'Entrada';
+                            break;
+                        }
                     
                     default:
                         break;
@@ -47,7 +50,7 @@ function verificarRegistro($registro, $idempleado){
             }
         }
         else{
-            return 'false '.$fila['Fecha'].' 123';
+            return 'Entrada';
         }
     }
 }
