@@ -22,10 +22,10 @@ if ($conexion -> connect_errno) {
 }
 else {
   if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $Tiempo = "2022-05-03 23:15:00";
-    $empleado_idempleado = "369";
-    $Dispositivo = "Suministro";
-    $Punto_Evento = "Suministro";
+    $Tiempo = "2022-05-04 15:00:00";
+    $empleado_idempleado = "222";
+    $Dispositivo = "Estudios";
+    $Punto_Evento = "Estudios";
     $Verificacion = "Solo rostro";
 
     $Estado = verificarRegistro($Tiempo,$empleado_idempleado);
