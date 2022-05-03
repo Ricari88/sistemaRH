@@ -25,12 +25,16 @@ function verificarRegistro($registro, $idempleado){
                 switch ($diaRegistroAnterior){
 
                     case $diaRegistroAnterior == $registroActual:
-                        if($horaRegistroActual < '12:00:00'){
+                        if($horaRegistroActual < '12:00:00' || $horaRegistroActual < '20:00:00' || $horaRegistroActual < '03:00:00'){
                             return 'Entrada';
                             break;
                         }
-                        elseif ($horaRegistroActual > '12:00:00') {
+                        elseif ($horaRegistroActual < '12:00:00' || $horaRegistroActual < '20:00:00' || $horaRegistroActual < '03:00:00') {
                             return 'Salida';
+                            break;
+                        }
+                        elseif ($horaRegistroAnterior == $horaRegistroActual) {
+                            return 'Entrada';
                             break;
                         }
                         else {
