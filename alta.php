@@ -22,11 +22,11 @@ if ($conexion -> connect_errno) {
 }
 else {
   if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $Tiempo = "2022-05-04 15:00:00";
-    $empleado_idempleado = "222";
-    $Dispositivo = "Estudios";
-    $Punto_Evento = "Estudios";
-    $Verificacion = "Solo rostro";
+    $Tiempo = "2022-05-05 06:40:00";
+    $empleado_idempleado = "3";
+    $Dispositivo = "Obras";
+    $Punto_Evento = "Obras-1";
+    $Verificacion = "Dedo";
 
     $Estado = verificarRegistro($Tiempo,$empleado_idempleado);
     
@@ -42,7 +42,7 @@ else {
         $sql = nuevoRegistro($Tiempo, $empleado_idempleado, $Dispositivo, $Punto_Evento, $Verificacion, $Estado, $Evento);
     }
     
-    echo $Estado;
+    echo $Tiempo.' '.$Estado;
     
     if ($conexion->query($sql) === TRUE) {
         echo "New record created successfully";
