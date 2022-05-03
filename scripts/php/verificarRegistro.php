@@ -25,7 +25,15 @@ function verificarRegistro($registro, $idempleado){
                 switch ($diaRegistroAnterior){
 
                     case $diaRegistroAnterior == $registroActual:
-                        if($horaRegistroAnterior < $horaRegistroActual){
+                        if($horaRegistroActual < '12:00:00'){
+                            return 'Entrada';
+                            break;
+                        }
+                        elseif ($horaRegistroActual > '12:00:00') {
+                            return 'Salida';
+                            break;
+                        }
+                        else {
                             return 'Salida';
                             break;
                         }
@@ -54,4 +62,8 @@ function verificarRegistro($registro, $idempleado){
         }
     }
 }
+
+
+//echo verificarRegistro('2022-05-04 06:00:00', '222');
+echo 'hi';
 ?>

@@ -7,5 +7,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="styles/main/tabla.css">
     <link rel="stylesheet" href="styles/main/form.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
+    <script src="styles/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
