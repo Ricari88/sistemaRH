@@ -2,8 +2,9 @@
 function verificarRegistro($registro, $idempleado){
     include('conexion.php');
     include('queries/busquedas.php');
+    include('banners/turnos.php');
 
-    $registroActual = date('Y-m-d', strtotime( $registro ) );//dia-mes-anio de la checada del dia de hoy
+    $diaRegistroActual = date('Y-m-d', strtotime( $registro ) );//dia-mes-anio de la checada del dia de hoy
     $horaRegistroActual = date('H:m', strtotime( $registro));//hora-minuto de la checada del dia de hoy
 
     if ($conexion -> connect_errno) {
@@ -24,25 +25,22 @@ function verificarRegistro($registro, $idempleado){
 
                 switch ($diaRegistroAnterior){
 
-                    case $diaRegistroAnterior == $registroActual:
-                        if($horaRegistroActual < '12:00:00' || $horaRegistroActual < '20:00:00' || $horaRegistroActual < '03:00:00'){
+                    case $diaRegistroAnterior == $diaRegistroActual:
+                        if($horaRegistroActual < '12:00:00' && $horaRegistroActual > $turnoMatutino){
                             return 'Entrada';
                             break;
                         }
-                        elseif ($horaRegistroActual < '12:00:00' || $horaRegistroActual < '20:00:00' || $horaRegistroActual < '03:00:00') {
-                            return 'Salida';
-                            break;
-                        }
-                        elseif ($horaRegistroAnterior == $horaRegistroActual) {
+                        elseif ($horaRegistroActual < '18:00:00' && $horaRegistroActual > $turnoVespertino) {
                             return 'Entrada';
                             break;
                         }
-                        else {
+                        else{
                             return 'Salida';
                             break;
                         }
+                        
                     
-                    case $diaRegistroAnterior < $registroActual:
+                    case $diaRegistroAnterior < $diaRegistroActual:
                         if($fila['Estado'] == 'Entrada'){
                             return 'Salida';
                             break;
@@ -68,6 +66,6 @@ function verificarRegistro($registro, $idempleado){
 }
 
 
-//echo verificarRegistro('2022-05-04 06:00:00', '222');
-echo 'hi';
+//echo verificarRegistro('2022-05-04 15:05:00', '222');
+//echo 'hi';
 ?>
