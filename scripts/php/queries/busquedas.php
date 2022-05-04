@@ -1,4 +1,5 @@
 <?php
+/*busca  todos los registros ordenado del mas antiguo al mas reciente*/
 function datosChecadas(){
     $sql="SELECT `asistencia`.*, `empleado`.*
     FROM `asistencia` 
@@ -8,12 +9,12 @@ function datosChecadas(){
     return $sql;
 }
 
-
-function busquedaFecha($fechaInicial, $fechaFinal){
+/* Buscar por fecha y por id empleado*/
+function busquedaFecha($fechaInicial, $fechaFinal, $idempleado){
     $sql="SELECT `asistencia`.*, `empleado`.*
     FROM `asistencia` 
     LEFT JOIN `empleado` ON `asistencia`.`empleado_idempleado` = `empleado`.`idempleado`
-    WHERE `asistencia`.`Fecha` BETWEEN '$fechaInicial' AND '$fechaFinal'
+    WHERE `asistencia`.`Fecha` BETWEEN '$fechaInicial' AND '$fechaFinal' AND `empleado`.`idempleado` = '$idempleado'
     ORDER BY `asistencia`.`Fecha` ASC";
 
     return $sql;
