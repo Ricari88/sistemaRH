@@ -10,20 +10,30 @@
     <div class="p-2"><a href="#" class="btn btn-primary">Iniciar Sesion</a></div>
   </div>
 </div>
-<div class="container">
+<div class="form">
   <div class="col-6">
-  <h2>Form Grid</h2>
-  <p>Create two form elements that appear side by side with .row and .col:</p>
-  <form action="/action_page.php">
+  <h2>Registros de asistencia</h2>
+  <!-- <p>Create two form elements that appear side by side with .row and .col:</p> -->
+  <form action="#.php">
     <div class="row">
-      <div class="col">
-        <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
-      </div>
-      <div class="col">
-        <input type="password" class="form-control" placeholder="Enter password" name="pswd">
+      <div class="col-4">
+        <label for="rpe">R.P.E.</label>
+        <input type="text" class="form-control" id="rpe" placeholder="R.P.E." name="rpe">
       </div>
     </div>
-    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    <div class="row">
+    <div class="col-4">
+        <label for="rpe">Fecha inicial</label>
+        <input type="date" class="form-control" placeholder="Fecha inicial" name="fini">
+      </div>
+    </div>
+    <div class="row">
+    <div class="col-4">
+        <label for="rpe">Fecha de terminación</label>
+        <input type="date" class="form-control" placeholder="Fecha terminacion" name="ffinal">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Buscar</button>
   </form>
   </div>
   <div class="col-6">
