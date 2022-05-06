@@ -30,3 +30,15 @@ header{
     justify-content: center;
     
 }
+
+
+
+
+/* index busquedas */
+.contenedor-principal{
+    height: 100%;
+}
+.izquierda{
+    border-right: 1px solid lightgray;
+    margin-right: 30px;
+}

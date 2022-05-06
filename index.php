@@ -14,10 +14,10 @@
 
 <!-- inicia formulario -->
 <div class="container-fluid">
-  <div class="div row"> 
-    <div class="form col-3">
+  <div class="row contenedor-principal"> 
+    <div class="form col-3 izquierda">
       <div class="col-12">
-        <h2>Buscar registros de asistencia</h2>
+      <h2 class="text-center">Buscar registros de asistencia</h2>
         <form action="#">
           <div class="row">
             <div class="col">
@@ -37,14 +37,16 @@
               <input type="date" class="form-control" placeholder="Fecha terminacion" name="ffinal">
             </div>
           </div>
-          <button type="submit" class="btn btn-primary mt-3" id="buscar">Buscar</button>
+          <button class="btn btn-primary mt-3" id="buscar">Buscar</button>
         </form>
       </div>
     </div>
 
-    <div class="col-8">
-      <!--span id="resultadoBusqueda"></span-->
-      <div id="resultadoBusqueda"></div>
+    <div class="col-8 derecha">
+      <div class="row"></div>
+      <div class="row">
+        <div id="resultadoBusqueda"></div>
+      </div>
     </div>
   </div>
 </div>
