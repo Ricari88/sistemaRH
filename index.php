@@ -18,7 +18,7 @@
     <div class="form col-3">
       <div class="col-12">
         <h2>Buscar registros de asistencia</h2>
-        <form action="#.php">
+        <form action="#">
           <div class="row">
             <div class="col">
               <label for="rpe">R.P.E.</label>
@@ -37,13 +37,14 @@
               <input type="date" class="form-control" placeholder="Fecha terminacion" name="ffinal">
             </div>
           </div>
-          <button type="submit" class="btn btn-primary mt-3" onclick="buscar()">Buscar</button>
+          <button type="submit" class="btn btn-primary mt-3" id="buscar">Buscar</button>
         </form>
       </div>
     </div>
 
     <div class="col-8">
-      <span id="resultadoBusqueda"></span>
+      <!--span id="resultadoBusqueda"></span-->
+      <div id="resultadoBusqueda"></div>
     </div>
   </div>
 </div>
@@ -51,6 +52,8 @@
 
 
 <script src="scripts/js/busquedas.js"></script>
+
+
 <?php
     include('scripts/php/banners/foot.php');
 ?>

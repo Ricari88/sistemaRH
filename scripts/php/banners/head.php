@@ -12,6 +12,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
     <script src="styles/bootstrap/js/bootstrap.min.js"></script>
+    <script src="scripts/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 

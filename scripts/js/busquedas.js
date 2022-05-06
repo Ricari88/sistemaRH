@@ -1,5 +1,7 @@
 'use strict'
 
-const buscar = () => {
-    document.getElementById("resultadoBusqueda").innerHTML = "Hey";
-}
+  $(document).ready( function(){
+    $("#buscar").click( () => {
+        $("#resultadoBusqueda").html("Hell-o");
+    })
+});

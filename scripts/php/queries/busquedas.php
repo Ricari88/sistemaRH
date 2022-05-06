@@ -43,5 +43,4 @@ function busquedaFechaRegistro($empleado){
     return $sql;
 }
 
-
 ?>
