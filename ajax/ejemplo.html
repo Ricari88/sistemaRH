@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../scripts/js/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+  <h1>The XMLHttpRequest Object</h1>
+
+  <h3>Start typing a name in the input field below:</h3>
+
+  <form action=""> 
+  RPE: <input type="text" id="rpe">
+  Fecha Inicial: <input type="date" id="fechaInicial">
+  Fecha Final: <input type="date" id="fechaFinal">
+  </form>
+
+  <button onclick="showHint()">Buscar</button>
+
+  <p>Suggestions: <span id="result"></span></p> 
+
+  <script>
+  function showHint() {
+      var xhttp;
+      var rpe = document.getElementById("rpe").value;
+      var fechaInicial = document.getElementById("fechaInicial").value;
+      var fechaFinal = document.getElementById("fechaFinal").value;
+
+      if (rpe.length == 0) { 
+        document.getElementById("result").innerHTML = "";
+        return;
+      }
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("result").innerHTML = this.responseText;
+        }
+      };
+      xhttp.open("GET", `../scripts/php/queries/ejemplo.php?idempleado=${rpe}&fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`, true);
+      xhttp.send();   
+    }
+  </script>
+
+</body>
+</html>
