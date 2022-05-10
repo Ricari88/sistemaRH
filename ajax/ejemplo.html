@@ -18,12 +18,12 @@
   Fecha Final: <input type="date" id="fechaFinal">
   </form>
 
-  <button onclick="showHint()">Buscar</button>
+  <button onclick="buscar()">Buscar</button>
 
   <p>Suggestions: <span id="result"></span></p> 
 
   <script>
-  function showHint() {
+  function buscar() {
       var xhttp;
       var rpe = document.getElementById("rpe").value;
       var fechaInicial = document.getElementById("fechaInicial").value;

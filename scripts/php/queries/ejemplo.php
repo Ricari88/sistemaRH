@@ -1,17 +1,17 @@
 <?php
 include("../conexion.php");
 $idempleado = $_GET["idempleado"];
-$fechaInicial = $_GET["fechaInicial"];
+/*$fechaInicial = $_GET["fechaInicial"];
 $fechaFinal = $_GET["fechaFinal"];
 
 $inicial = date('Y-m-d', strtotime( $fechaInicial ) );
-$final = date('Y-m-d', strtotime( $fechaFinal ) );
+$final = date('Y-m-d', strtotime( $fechaFinal ) );*/
 
-$sql="SELECT `asistencia`.*, `empleado`.*
+$buscar="SELECT `asistencia`.*, `empleado`.*
 FROM `asistencia` 
 LEFT JOIN `empleado` ON `asistencia`.`empleado_idempleado` = `empleado`.`idempleado`
 WHERE `asistencia`.`empleado_idempleado` = $idempleado
-AND `asistencia`.`Fecha` BETWEEN '%$inicial%' AND '%$final%'
+
 ORDER BY `asistencia`.`Fecha` ASC";
 
 if ($conexion -> connect_errno) {
@@ -19,13 +19,14 @@ if ($conexion -> connect_errno) {
     //exit();
 }
 else{
-    $result = $conexion -> query($sql);
-    if($result -> num_rows){
+    $result = mysqli_query($conexion, $buscar);
+    if($result){
         echo"<table>
                 <thead>
                     <tr>
                         <th>RPE</th>
                         <th>Nombre</th>
+                        <th>Fecha</th>
                     </tr>
                 </thead>
                 <tbody>";
@@ -34,6 +35,7 @@ else{
             echo '<tr>';
             echo '<td>'.$fila['rpe'].'</td>';
             echo '<td>'.$nombreEmpleado.'</td>';
+            echo '<td>'.$fila['Fecha'].'</td>';
             echo '</tr>';
         }
 
@@ -45,5 +47,5 @@ else{
     }
 }
 
-echo "<br />".$idempleado."<br />".$fechaInicial."<br />".$fechaFinal;
+//echo "<br />".$idempleado."<br />".$fechaInicial."<br />".$fechaFinal;
 ?>
