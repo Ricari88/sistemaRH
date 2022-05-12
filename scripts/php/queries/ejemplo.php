@@ -1,17 +1,16 @@
 <?php
 include("../conexion.php");
 $idempleado = $_GET["idempleado"];
-/*$fechaInicial = $_GET["fechaInicial"];
+$fechaInicial = $_GET["fechaInicial"];
 $fechaFinal = $_GET["fechaFinal"];
 
-$inicial = date('Y-m-d', strtotime( $fechaInicial ) );
+/*$inicial = date('Y-m-d', strtotime( $fechaInicial ) );
 $final = date('Y-m-d', strtotime( $fechaFinal ) );*/
 
 $buscar="SELECT `asistencia`.*, `empleado`.*
 FROM `asistencia` 
 LEFT JOIN `empleado` ON `asistencia`.`empleado_idempleado` = `empleado`.`idempleado`
-WHERE `asistencia`.`empleado_idempleado` = $idempleado
-
+WHERE `asistencia`.`empleado_idempleado` = $idempleado AND `asistencia`.`Fecha` BETWEEN '$fechaInicial' AND '$fechaFinal'
 ORDER BY `asistencia`.`Fecha` ASC";
 
 if ($conexion -> connect_errno) {
@@ -47,5 +46,5 @@ else{
     }
 }
 
-//echo "<br />".$idempleado."<br />".$fechaInicial."<br />".$fechaFinal;
+echo "<br />".$idempleado."<br />".$fechaInicial."<br />".$fechaFinal;
 ?>
