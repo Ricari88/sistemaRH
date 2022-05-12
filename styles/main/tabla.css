@@ -11,3 +11,8 @@ table tr:nth-child(even){
     color: white;
     background-color: red;
 }
+
+
+.resultado td{
+    margin:5px;
+}

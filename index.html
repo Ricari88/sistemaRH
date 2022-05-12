@@ -58,7 +58,7 @@
           <div class="row">
             <div class="col">
               <label for="rpe">R.P.E.</label>
-              <input type="text" class="form-control" id="rpe" placeholder="R.P.E." name="rpe">
+              <input type="text" class="form-control" id="rpe" placeholder="R.P.E." name="rpe" autocomplete="off">
             </div>
           </div>
           <div class="row">
@@ -81,7 +81,9 @@
     <div class="col-8 derecha">
       <div class="row"></div>
       <div class="row">
-        <div id="resultadoBusqueda"><h1>h</h1></div>
+        <div id="resultadoBusqueda">
+          <span id="result"></span>
+        </div>
       </div>
     </div>
   </div>
@@ -93,35 +95,32 @@
   $("document").ready(function () {
     $("#buscar").click(()=>{
       event.preventDefault()
-      /*var xhttp;
+      var xhttp;
       var rpe = $("#rpe").val();
       var fechaInicial = $("#fechaInicial").val();
       var fechaFinal = $("#fechaFinal").val();
 
       if (rpe.length == 0) { 
-        $("#resultadoBusqueda").html("");
+        $("#result").html(`h`);
         return;
       }
-      xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        event.preventDefault();
-        $("#resultadoBusqueda").html(this.responseText);
+      else{
+          //$("#result").html(`${rpe} ${fechaInicial} ${fechaFinal}`)
+
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+           if (this.readyState == 4 && this.status == 200) {
+            $("#result").html(this.responseText);
+        }
       }
+      
     };
-    xhttp.open("GET", `php/queries/ejemplo.php?idempleado=${rpe}&fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`, true);
-    xhttp.send(); */
-    alert("h");
+    xhttp.open("GET", `scripts/php/queries/ejemplo.php?idempleado=${rpe}&fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`, true);
+    xhttp.send();
     })
   })
 
 
-
-
-  function buscar() {
-  event.preventDefault();
-    
-}
 </script>
 
 

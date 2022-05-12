@@ -1,5 +1,6 @@
 <?php
 include("../conexion.php");
+include("../checadas.php");
 $idempleado = $_GET["idempleado"];
 $fechaInicial = $_GET["fechaInicial"];
 $fechaFinal = $_GET["fechaFinal"];
@@ -20,31 +21,45 @@ if ($conexion -> connect_errno) {
 else{
     $result = mysqli_query($conexion, $buscar);
     if($result){
-        echo"<table>
-                <thead>
-                    <tr>
-                        <th>RPE</th>
-                        <th>Nombre</th>
-                        <th>Fecha</th>
-                    </tr>
-                </thead>
-                <tbody>";
+        echo'
+        <table class="resultado">
+            <thead class="text-center">
+                <tr>
+                    <th>RPE</th>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th>Hora del registro</th>
+                    <th>Dispositivo</th>
+                    <th>Punto de checada</th>
+                    <th>Tipo de verificación</th>
+                    <th>Estado</th>
+                    <th>Evento</th>
+                    <th>Notas</th>
+                </tr>
+            </thead>
+            <tbody>';
         while ($fila = $result->fetch_assoc()) {
             $nombreEmpleado = $fila['nombre'].' '.$fila['apellido'];
-            echo '<tr>';
-            echo '<td>'.$fila['rpe'].'</td>';
-            echo '<td>'.$nombreEmpleado.'</td>';
-            echo '<td>'.$fila['Fecha'].'</td>';
-            echo '</tr>';
+                echo '<tr>';
+                    echo '<td>'.$fila['rpe'].'</td>';
+                    echo '<td>'.$nombreEmpleado.'</a></td>';
+                    echo ($fila['Estado']=="Entrada") ? entrada($fila['Fecha']) : salida($fila['Fecha']);
+                    echo '<td>'.$fila['Dispositivo'].'</td>';
+                    echo '<td>'.$fila['Punto del evento'].'</td>';
+                    echo '<td>'.$fila['Verificacion'].'</td>';
+                    echo '<td>'.$fila['Estado'].'</td>';
+                    echo '<td>'.$fila['Evento'].'</td>';
+                    echo '<td>'.$fila['Notas'].'</td>';
+                echo '</tr>';
         }
 
-        echo "  </tbody>
-             </table>";
+        echo '</tbody>
+        </table>';
     }
     else{
         echo "no se encontro informacion";
     }
 }
 
-echo "<br />".$idempleado."<br />".$fechaInicial."<br />".$fechaFinal;
+//echo "<br />".$idempleado."<br />".$fechaInicial."<br />".$fechaFinal;
 ?>
