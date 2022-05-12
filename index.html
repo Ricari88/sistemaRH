@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <title>Asistencias</title>
+    <link rel="stylesheet" href="styles/main/main.css">
+    <link rel="stylesheet" href="styles/main/tabla.css">
+    <link rel="stylesheet" href="styles/main/form.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
+    <script src="styles/bootstrap/js/bootstrap.min.js"></script>
+    <script src="scripts/js/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+
+    <header class="head-banner">
+        <div class="header">
+            <div class="">
+                <div class="row head-banner-control">
+                    <div class="col-4 logo">
+                        <img src="assets/img/logo-blanco.jpg" alt="Logo CFE" class="main-logo">
+                    </div>
+                    <div class="col-4 text-center">
+                        <div class="titulo">
+                            <h1 class="titulo-principal">
+                                Residencia General de Cerro Prieto
+                                <!-- <h3 class="titulo-secundario">
+                                    Departamento de Recursos Humanos
+                                </h3> -->
+                            </h1>
+
+                        </div>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+<main>
+  <!-- boton iniciar sesion -->
+<div class="mt-2">
+  <div class="d-flex flex-row-reverse">
+    <div class="p-2"><a href="#" class="btn btn-primary">Iniciar Sesion</a></div>
+  </div>
+</div>
+
+<!-- inicia formulario -->
+<div class="container-fluid">
+  <div class="row contenedor-principal"> 
+    <div class="form col-3 izquierda">
+      <div class="col-12">
+      <h2 class="text-center">Buscar registros de asistencia</h2>
+        <form>
+          <div class="row">
+            <div class="col">
+              <label for="rpe">R.P.E.</label>
+              <input type="text" class="form-control" id="rpe" placeholder="R.P.E." name="rpe">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="rpe">Fecha inicial</label>
+              <input type="date" class="form-control" placeholder="Fecha inicial" name="fechaInicial" id="fechaInicial">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="rpe">Fecha de terminación</label>
+              <input type="date" class="form-control" placeholder="Fecha terminacion" name="fechaFinal" id="fechaFinal">
+            </div>
+          </div>
+          <button class="btn btn-primary mt-3" id="buscar">Buscar</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-8 derecha">
+      <div class="row"></div>
+      <div class="row">
+        <div id="resultadoBusqueda"><h1>h</h1></div>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+
+<script>
+  $("document").ready(function () {
+    $("#buscar").click(()=>{
+      event.preventDefault()
+      /*var xhttp;
+      var rpe = $("#rpe").val();
+      var fechaInicial = $("#fechaInicial").val();
+      var fechaFinal = $("#fechaFinal").val();
+
+      if (rpe.length == 0) { 
+        $("#resultadoBusqueda").html("");
+        return;
+      }
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        event.preventDefault();
+        $("#resultadoBusqueda").html(this.responseText);
+      }
+    };
+    xhttp.open("GET", `php/queries/ejemplo.php?idempleado=${rpe}&fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`, true);
+    xhttp.send(); */
+    alert("h");
+    })
+  })
+
+
+
+
+  function buscar() {
+  event.preventDefault();
+    
+}
+</script>
+
+
+</body>
+</html>

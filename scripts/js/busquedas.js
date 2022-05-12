@@ -1,10 +1,21 @@
-'use strict'
+function buscar() {
+  event.preventDefault();
+  var xhttp;
+  var rpe = document.getElementById("rpe").value;
+  var fechaInicial = document.getElementById("fechaInicial").value;
+  var fechaFinal = document.getElementById("fechaFinal").value;
 
-  $(document).ready( function (){
-      var i = 0;
-    $("#buscar").click( function (){
-        event.preventDefault();
-        $("#resultadoBusqueda").html(`<span>Hell-${i}</span>`);
-        i++;
-    })
-});
+  if (rpe.length == 0) { 
+    document.getElementById("resultadoBusqueda").innerHTML = "";
+    return;
+  }
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      event.preventDefault();
+      document.getElementById("resultadoBusqueda").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("POST", `php/queries/ejemplo.php?idempleado=${rpe}&fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`, true);
+  xhttp.send();   
+}
