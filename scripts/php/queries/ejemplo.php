@@ -10,8 +10,8 @@ $final = date('Y-m-d', strtotime( $fechaFinal ) );*/
 
 $buscar="SELECT `asistencia`.*, `empleado`.*
 FROM `asistencia` 
-LEFT JOIN `empleado` ON `asistencia`.`empleado_idempleado` = `empleado`.`idempleado`
-WHERE `asistencia`.`empleado_idempleado` = $idempleado AND `asistencia`.`Fecha` BETWEEN '$fechaInicial' AND '$fechaFinal'
+INNER JOIN `empleado` ON `asistencia`.`empleado_idempleado` = `empleado`.`idempleado`
+WHERE `empleado`.`rpe` = '$idempleado' AND `asistencia`.`Fecha` BETWEEN '$fechaInicial' AND '$fechaFinal'
 ORDER BY `asistencia`.`Fecha` ASC";
 
 if ($conexion -> connect_errno) {
@@ -39,7 +39,7 @@ else{
             </thead>
             <tbody>';
         while ($fila = $result->fetch_assoc()) {
-            $nombreEmpleado = $fila['nombre'].' '.$fila['apellido'];
+                $nombreEmpleado = $fila['nombre'].' '.$fila['apellido'];
                 echo '<tr>';
                     echo '<td>'.$fila['rpe'].'</td>';
                     echo '<td>'.$nombreEmpleado.'</a></td>';
