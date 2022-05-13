@@ -24,7 +24,7 @@ function buscarRetardos(){
     $sql="SELECT `asistencia`.*, `empleado`.*
     FROM `asistencia` 
     LEFT JOIN `empleado` ON `asistencia`.`empleado_idempleado` = `empleado`.`idempleado`
-    WHERE `asistencia`.`` > 07:00:01
+    WHERE `asistencia`.`` > 07:00:59
     ORDER BY `asistencia`.`Fecha` ASC";
 
     return $sql;
@@ -36,7 +36,7 @@ function busquedaFechaRegistro($empleado){
     $sql="SELECT *
     FROM `asistencia`
     LEFT JOIN `empleado` ON `asistencia`.`empleado_idempleado` = `empleado`.`idempleado`
-    WHERE `asistencia`.`empleado_idempleado` = '$empleado'
+    WHERE `asistencia`.`empleado_idempleado` = '$empleado' /* cambiar por RPE de empleado*/
     ORDER BY `asistencia`.`Fecha` DESC
     LIMIT 1;";
 
