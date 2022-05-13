@@ -8,16 +8,16 @@ function entrada($entrada){
 
     switch ($time) {
         case $time > $turnoMatutino && $time < $salidaMatutino:
-            return "<td>".$dia."</td><td class='late'>".$time."</td>";
+            return "<td>".$dia."</td><td class='late text-center'>".$time."</td>";
             break;
         case $time > $turnoVespertino && $time < $salidaVespertino:
-            return "<td>".$dia."</td><td class='late'>".$time."</td>";
+            return "<td>".$dia."</td><td class='late text-center'>".$time."</td>";
             break;
         case $time > $turnoNocturno:
-            return "<td>".$dia."</td><td class='late'>".$time."</td>";
+            return "<td>".$dia."</td><td class='late text-center'>".$time."</td>";
             break;
         default:
-            return "<td>".$dia."</td><td>".$time."</td>";
+            return "<td>".$dia."</td><td class='text-center'>".$time."</td>";
             break;
     }
 
@@ -32,16 +32,16 @@ function salida($salida){
 
     switch ($time) {
         case $time < $salidaMatutino && $time > $turnoMatutino:
-            return "<td>".$dia."</td><td class='late'>".$time."</td>";
+            return "<td>".$dia."</td><td class='late text-center'>".$time."</td>";
             break;
         case $time < $salidaVespertino && $time > $turnoVespertino:
-            return "<td>".$dia."</td><td class='late'>".$time."</td>";
+            return "<td>".$dia."</td><td class='late text-center'>".$time."</td>";
             break;
         case $time < $salidaNocturno:
-            return "<td>".$dia."</td><td class='late'>".$time."</td>";
+            return "<td>".$dia."</td><td class='late text-center'>".$time."</td>";
             break;
         default:
-            return "<td>".$dia."</td><td>".$time."</td>";
+            return "<td>".$dia."</td><td class='text-center'>".$time."</td>";
         break;
     }
 }

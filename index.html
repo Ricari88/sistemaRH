@@ -44,7 +44,7 @@
   <!-- boton iniciar sesion -->
 <div class="mt-2">
   <div class="d-flex flex-row-reverse">
-    <div class="p-2"><a href="#" class="btn btn-primary">Iniciar Sesion</a></div>
+    <div class="p-2"><a href="#" class="btn btn-lg btn-outline-dark">Iniciar Sesion</a></div>
   </div>
 </div>
 
@@ -73,7 +73,7 @@
               <input type="date" class="form-control" placeholder="Fecha terminacion" name="fechaFinal" id="fechaFinal">
             </div>
           </div>
-          <button class="btn btn-primary mt-3" id="buscar">Buscar</button>
+          <button class="btn btn-block btn-primary mt-4" id="buscar">Buscar</button>
         </form>
       </div>
     </div>
@@ -93,6 +93,13 @@
 
 <script>
   $("document").ready(function () {
+
+    $("#rpe").keyup(()=>{
+        $("#rpe").css("border-color","lightgray")
+        $("#fechaInicial").css("border-color","lightgray")
+        $("#fechaFinal").css("border-color","lightgray")
+    });
+
     $("#buscar").click(()=>{
       event.preventDefault()
       var xhttp;
@@ -101,7 +108,10 @@
       var fechaFinal = $("#fechaFinal").val();
 
       if (rpe.length == 0) { 
-        $("#result").html(`h`);
+        $("#result").html(`Ingrese la información requerida`);
+        $("#rpe").css("border-color","red")
+        $("#fechaInicial").css("border-color","red")
+        $("#fechaFinal").css("border-color","red")
         return;
       }
       else{

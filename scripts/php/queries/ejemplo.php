@@ -41,15 +41,15 @@ else{
         while ($fila = $result->fetch_assoc()) {
                 $nombreEmpleado = $fila['nombre'].' '.$fila['apellido'];
                 echo '<tr>';
-                    echo '<td>'.$fila['rpe'].'</td>';
+                    echo '<td class="text-center">'.$fila['rpe'].'</td>';
                     echo '<td>'.$nombreEmpleado.'</a></td>';
                     echo ($fila['Estado']=="Entrada") ? entrada($fila['Fecha']) : salida($fila['Fecha']);
-                    echo '<td>'.$fila['Dispositivo'].'</td>';
+                    echo '<td class="text-center">'.$fila['Dispositivo'].'</td>';
                     echo '<td>'.$fila['Punto del evento'].'</td>';
                     echo '<td>'.$fila['Verificacion'].'</td>';
-                    echo '<td>'.$fila['Estado'].'</td>';
+                    echo '<td class="text-center">'.$fila['Estado'].'</td>';
                     echo '<td>'.$fila['Evento'].'</td>';
-                    echo '<td>'.$fila['Notas'].'</td>';
+                    echo '<td class="text-center">'.$fila['Notas'].'</td>';
                 echo '</tr>';
         }
 

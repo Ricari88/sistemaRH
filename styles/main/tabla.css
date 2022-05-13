@@ -13,6 +13,6 @@ table tr:nth-child(even){
 }
 
 
-.resultado td{
-    margin:5px;
+#result tbody td{
+    padding: 10px;
 }

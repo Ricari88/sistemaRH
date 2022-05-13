@@ -31,7 +31,11 @@ header{
     
 }
 
-
+/* boton iniciar sesion*/
+.mt-2{
+    margin-right: 50px;
+    margin-bottom: 50px;
+}
 
 
 /* index busquedas */
@@ -40,5 +44,9 @@ header{
 }
 .izquierda{
     border-right: 1px solid lightgray;
-    margin-right: 30px;
+    margin-right: 50px;
+}
+.derecha{
+    width: 100%;
+    overflow-y: auto;
 }
