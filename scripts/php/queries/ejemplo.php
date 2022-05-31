@@ -23,32 +23,28 @@ else{
     if($result){
         echo'
         <table class="resultado">
-            <thead class="text-center">
+            <thead class="text-center header">
                 <tr>
                     <th>RPE</th>
-                    <th>Nombre</th>
+                    <th id="nombre">Nombre</th>
                     <th>Fecha</th>
                     <th>Hora del registro</th>
-                    <th>Dispositivo</th>
-                    <th>Punto de checada</th>
-                    <th>Tipo de verificación</th>
                     <th>Estado</th>
-                    <th>Evento</th>
                     <th>Notas</th>
                 </tr>
             </thead>
-            <tbody>';
+            <tbody class="container">';
         while ($fila = $result->fetch_assoc()) {
                 $nombreEmpleado = $fila['nombre'].' '.$fila['apellido'];
                 echo '<tr>';
                     echo '<td class="text-center">'.$fila['rpe'].'</td>';
                     echo '<td>'.$nombreEmpleado.'</a></td>';
                     echo ($fila['Estado']=="Entrada") ? entrada($fila['Fecha']) : salida($fila['Fecha']);
-                    echo '<td class="text-center">'.$fila['Dispositivo'].'</td>';
-                    echo '<td>'.$fila['Punto del evento'].'</td>';
-                    echo '<td>'.$fila['Verificacion'].'</td>';
+                    //echo '<td class="text-center">'.$fila['Dispositivo'].'</td>';
+                    //echo '<td>'.$fila['Punto del evento'].'</td>';
+                    //echo '<td>'.$fila['Verificacion'].'</td>';
                     echo '<td class="text-center">'.$fila['Estado'].'</td>';
-                    echo '<td>'.$fila['Evento'].'</td>';
+                    //echo '<td>'.$fila['Evento'].'</td>';
                     echo '<td class="text-center">'.$fila['Notas'].'</td>';
                 echo '</tr>';
         }

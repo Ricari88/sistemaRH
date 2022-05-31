@@ -13,6 +13,26 @@ table tr:nth-child(even){
 }
 
 
+.resultado{
+    table-layout: fixed;
+    width: 100%;
+}
+
+.resultado .header{
+    position:sticky;
+    top: 0 ;
+}
+
+.resultado .contianer{
+    height: 10px;
+    overflow: auto;
+}
+
 #result tbody td{
     padding: 10px;
+}
+
+
+#result tbody td #nombre{
+    padding: 5px;
 }
