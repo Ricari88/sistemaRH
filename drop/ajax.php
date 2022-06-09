@@ -14,11 +14,13 @@ if (!file_exists('uploads')) {
 }
 $date = date('Y-m-d');
 //$filename = time().'_'.$_FILES['file']['name'];
-$filename = $date.'_'.$_FILES['file']['name'];
+$filename = $_FILES['file']['name'];
  
 move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/'.$filename);
+
+//echo json_encode( explode("\r\n",file_get_contents('uploads/'.$filename)) );
  
-echo 'uploads/'.$filename;
+echo "Filename: " . $filename;
 die;
 
 ?>
