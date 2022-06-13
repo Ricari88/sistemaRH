@@ -22,23 +22,43 @@ if ($conexion -> connect_errno) {
 }
 else {
   if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $Tiempo = "2022-05-06 06:49:00";
-    $empleado_idempleado = "21";
-    $Dispositivo = "Suministro";
-    $Punto_Evento = "Suministro";
+    $Tiempo = "2022-06-06 14:51:00";
+    $empleado_idempleado = "222";
+    $Dispositivo = "Estudios";
+    $Punto_Evento = "Estudios-1";
     $Verificacion = "Rostro";
 
+    /*
+    * funcion verificarRegistro viene del archivo "scripts/php/verificarRegistro.php 
+    * donde se define el estado "Entrada/Salida
+
+    */
     $Estado = verificarRegistro($Tiempo,$empleado_idempleado);
+
+
     
     $Evento = "Apertura con tarjeta de proximidad";
     
     if($Estado=="Entrada"){
+      /*
+      *la funcion entrada viene desde el archivo "scripts/php/insert.php, 
+      *donde se realiza el registro de entrada
+      */
         $sql = entrada($Tiempo,$empleado_idempleado,$Dispositivo,$Punto_Evento,$Verificacion,$Estado, $Evento);
     }
     elseif ($Estado=="Salida") {
+      /*
+      *la funcion salida viene desde el archivo "scripts/php/insert.php, 
+      *donde se realiza el registro de salida
+      */
         $sql = salida($Tiempo,$empleado_idempleado,$Dispositivo,$Punto_Evento,$Verificacion,$Estado, $Evento);
     }
     else{
+      /*
+      *la funcion nuevoRegistro viene desde el archivo "scripts/php/insert.php, 
+      *donde se realiza el registro nuevo en caso de no haber algun registro
+      *anterior de la persona.
+      */
         $sql = nuevoRegistro($Tiempo, $empleado_idempleado, $Dispositivo, $Punto_Evento, $Verificacion, $Estado, $Evento);
     }
     
