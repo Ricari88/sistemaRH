@@ -1,37 +1,33 @@
 <?php
-$fileRoute = 'uploads/Eventos_2022053007307.txt';
 
-$file = new SplFileObject($fileRoute);
+$file = file('uploads/Eventos_2022053007307.txt'); // * crea un array con el contenido del archivo de texto
 
-header('Content-Type: application/json');
-$json_data = file_get_contents($fileRoute);
-//separar archivo por saltos de linea \n
-$json_data = preg_split("/\n/", $json_data);
-//para cada elemento
-for ($i = 0; $i < count($json_data); $i++) { 
-  //se separa por tabulador
-  $dupla = preg_split("/\t/", $json_data[$i], -1, PREG_SPLIT_NO_EMPTY);
-  //sustituir el elemento por un array asociativo similar
-  $json_data[$i] = array(
-    "Fecha: " => $dupla[0]
-  );
+$file_string = implode(',',$file); // * crea un string con salto de linea y separa por comas el array $file
+
+$array_from_string = explode(",",$file_string);
+
+//print_r($array_from_string);
+
+for($i = 0; $i < count($array_from_string); $i++){
+  $line = explode(' ',$array_from_string[$i]);
+
+
+  print_r($line);
+
 }
-
-echo json_decode($json_data);
-
 /*
-$arr = [];
-
-$newArr = [];
-
-while(!$file->eof())
-  {
-	array_push($arr, $file->fgets());
-  }
-
-  for ($i=1; $i < count($arr); $i++) { 
-    echo $arr[$i];
-    array_push($newArr, explode(',',$arr[$i]));
-  }
+for ($j=0; $j < count($line); $j++) { 
+  echo '<br />'.$j.'-'.$line[$j].'<br />';
+}
 */
+/*
+echo $line[0]; // * Tiempo
+echo $line[1]; // * hora y ID de Usuario !separar para hora y ID
+echo $line[34];// * Dispositivo
+echo $line[41];// * Punto del evento
+echo $line[51].' '.$line[52].' '.$line[53];// * Verificacion --- !separar el [53] para estado
+echo $line[57].' '.$line[58].' '.$line[59].' '.$line[60].' '.$line[61];// * Evento
+*/
+
+
 ?>
