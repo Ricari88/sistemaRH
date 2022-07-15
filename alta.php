@@ -28,6 +28,13 @@ else {
     $Punto_Evento = "Estudios-1";
     $Verificacion = "Rostro";
 
+
+    /*
+    TODO agregar funcion para convertir xls a csv, 
+    TODO obtener datos de Tiempo, idempleado, Dispositivo, Punto del evento
+    TODO Verificacion, Estado, Evento y Notas
+    */
+
     /*
     * funcion verificarRegistro viene del archivo "scripts/php/verificarRegistro.php 
     * donde se define el estado "Entrada/Salida
