@@ -1,11 +1,17 @@
 <?php
-if ($_POST) {
-    $user = $_POST['user'];
+session_start();
 
-    echo "Hello ".$user;
-}
-else {
-    echo"Something went wrong";
-}
+session_destroy();
 
+   include("conexion.php");
+   
+   
+   if($_SERVER["REQUEST_METHOD"] == "POST") {
+        session_start();
+         echo "Welcome ";
+         $_SESSION['nombre'] = $_POST['user'];
+         header("location: ../../index.php");
+      }else {
+         $error = "Your Login Name or Password is invalid";
+      }
 ?>

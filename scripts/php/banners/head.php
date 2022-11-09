@@ -1,8 +1,3 @@
-<?php
-/*session_start();
-$_SESSION['name'] = "rc";*/
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,11 +46,25 @@ $_SESSION['name'] = "rc";*/
 <!-- boton desaparece si se encuentra una sesion iniciada -->
 
 <!-- banner aparece cuando hay una sesion activa -->
+
+
+
+<?php session_start();
+if(isset($_SESSION["nombre"])){
+    $nombre = $_SESSION['nombre'];
+   
+    include('main-banner.php');?>
+    <!-- boton iniciar sesion -->
+    <div class="mt-1">
+        <div class="d-flex flex-row-reverse">
+            <div class="p-1">
+                <a href="scripts/php/closeSession.php" class="btn btn-danger">
+                    Cerrar sesión
+                </a>
+            </div>
+        </div>
+    </div>
 <?php
-if(isset($_SESSION["name"])){
-    $nombre = "Hola ".$_SESSION['name'];
-    echo "<script>alert('$nombre')</script>";
-    include('main-banner.php');
 }
 else{
     ?>
@@ -64,7 +73,7 @@ else{
         <div class="d-flex flex-row-reverse">
             <div class="p-2">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                    Launch demo modal
+                    Iniciar sesión
                 </button>
             </div>
         </div>
@@ -97,8 +106,8 @@ else{
                 <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Contrase&ntilde;a</label>
-                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <label for="exampleInputPassword1">Contraseña</label>
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="">
             </div>
                 <!-- <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
