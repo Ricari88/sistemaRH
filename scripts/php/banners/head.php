@@ -27,9 +27,9 @@
                         <div class="titulo">
                             <h1 class="titulo-principal">
                                 Residencia General de Cerro Prieto
-                                <!-- <h3 class="titulo-secundario">
+                                 <h3 class="titulo-secundario">
                                     Departamento de Recursos Humanos
-                                </h3> -->
+                                </h3>
                             </h1>
 
                         </div>
@@ -39,3 +39,10 @@
             </div>
         </div>
     </header>
+
+
+    <?php
+        echo "<br />hello";
+    ?>
+
+    <script>alert("hello")</script>
