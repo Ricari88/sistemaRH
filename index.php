@@ -16,38 +16,7 @@
 
 </head>
 <body>
-
-    <header class="head-banner">
-        <div class="header">
-            <div class="">
-                <div class="row head-banner-control">
-                    <div class="col-4 logo">
-                        <img src="assets/img/logo-blanco.jpg" alt="Logo CFE" class="main-logo">
-                    </div>
-                    <div class="col-4 text-center">
-                        <div class="titulo">
-                            <h1 class="titulo-principal">
-                                Residencia General de Cerro Prieto
-                                <!-- <h3 class="titulo-secundario">
-                                    Departamento de Recursos Humanos
-                                </h3> -->
-                            </h1>
-
-                        </div>
-                    </div>
-                    <div class="col-4"></div>
-                </div>
-            </div>
-        </div>
-    </header>
-<main>
-  <!-- boton iniciar sesion -->
-<div class="mt-2">
-  <div class="d-flex flex-row-reverse">
-    <div class="p-2"><a href="#" class="btn btn-lg btn-outline-dark">Iniciar Sesion</a></div>
-  </div>
-</div>
-
+<?php include('scripts/php/banners/head.php');?>
 <!-- inicia formulario -->
 <div class="container-fluid">
   <div class="row contenedor-principal"> 
@@ -133,6 +102,6 @@
 
 </script>
 
-
+<?php include('scripts/php/banners/foot.html')?>
 </body>
 </html>
