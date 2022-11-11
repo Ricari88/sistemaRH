@@ -22,11 +22,11 @@ if ($conexion -> connect_errno) {
 }
 else {
   if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $Tiempo = "2022-06-06 14:51:00";
+    $tiempo = "2022-11-06 06:51:00";
     $empleado_idempleado = "222";
-    $Dispositivo = "Estudios";
-    $Punto_Evento = "Estudios-1";
-    $Verificacion = "Rostro";
+    $dispositivo = "Estudios";
+    $puntoEvento = "Estudios-1";
+    $verificacion = "Rostro";
 
 
     /*
@@ -40,25 +40,25 @@ else {
     * donde se define el estado "Entrada/Salida
 
     */
-    $Estado = verificarRegistro($Tiempo,$empleado_idempleado);
+    $estado = verificarRegistro($tiempo,$empleado_idempleado);
 
 
     
-    $Evento = "Apertura con tarjeta de proximidad";
+    $evento = "Apertura con tarjeta de proximidad";
     
-    if($Estado=="Entrada"){
+    if($estado=="Entrada"){
       /*
       *la funcion entrada viene desde el archivo "scripts/php/insert.php, 
       *donde se realiza el registro de entrada
       */
-        $sql = entrada($Tiempo,$empleado_idempleado,$Dispositivo,$Punto_Evento,$Verificacion,$Estado, $Evento);
+        $sql = entrada($tiempo,$empleado_idempleado,$dispositivo,$puntoEvento,$verificacion,$estado, $evento);
     }
     elseif ($Estado=="Salida") {
       /*
       *la funcion salida viene desde el archivo "scripts/php/insert.php, 
       *donde se realiza el registro de salida
       */
-        $sql = salida($Tiempo,$empleado_idempleado,$Dispositivo,$Punto_Evento,$Verificacion,$Estado, $Evento);
+        $sql = salida($tiempo,$empleado_idempleado,$dispositivo,$puntoEvento,$verificacion,$estado, $evento);
     }
     else{
       /*
@@ -66,10 +66,10 @@ else {
       *donde se realiza el registro nuevo en caso de no haber algun registro
       *anterior de la persona.
       */
-        $sql = nuevoRegistro($Tiempo, $empleado_idempleado, $Dispositivo, $Punto_Evento, $Verificacion, $Estado, $Evento);
+        $sql = nuevoRegistro($tiempo,$empleado_idempleado,$dispositivo,$puntoEvento,$verificacion,$estado, $evento);
     }
     
-    echo $Tiempo.' '.$Estado;
+    echo $tiempo.' '.$estado;
     
     if ($conexion->query($sql) === TRUE) {
         echo "New record created successfully";

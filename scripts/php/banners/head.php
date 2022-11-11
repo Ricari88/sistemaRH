@@ -102,7 +102,7 @@ else{
         <form method="POST" action="scripts/php/login.php">
             <div class="form-group">
                 <label for="InputUser">Usuario</label>
-                <input type="text" name="user" class="form-control" id="InputUser"  placeholder="R.P.E." style="text-transform:uppercase" maxlength="5">
+                <input type="text" name="user" class="form-control" id="InputUser"  placeholder="R.P.E." style="text-transform:uppercase" maxlength="5" autocomplete="off">
                 <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
             </div>
             <div class="form-group">
